@@ -1,37 +1,31 @@
 package Sort_Algorithms.Assumption_Sort_Algorithms;
 
-// Makes assumptions about the data
-// Data mush have same radix (The number of unique digits or values in the case
-// of characters that a numbering system or alphabet has)and width (The number of
-// digits or letters)
-// Radix Sort assumes that all the values have the same radix and the same width
-// Because of this, data must be integers or strings
-// Sort based on each individual digit or letter position
-// Start at the rightmost position
-// Must use a stable algorithm at each stage
+// Stable Counting Sort
+// Requires extra steps
+// Can calculate where values should be written back to the original array
+// Writing the values into the array in backwards order ensures stability
 
-// Radix Sort
-// Counting Sort is often used as the sort algorithm for Radix Sort
-// must be stable Counting Sort
-// Linear/Constant Time Complexity - O(n) can achieve, this because we
-// are making assumptions about the data we are sorting
-// Even so, if often runs slower than O(nlogn) algorithms because of the
-// overhead involved
-// In-place algorithm or not be in-place depends on which sort algorithm you use
-// to do the sorting in each phase
-// Stable algorithm
+// This works because we traverse the input array from right to left, and
+// we write duplicate values into the temp array from right to left
+// If we know that duplicate values will go into positions 3 and 4, we write
+// the rightmost value in the input array into position 4, and the leftmost
+// value into position 3
+// This preserves the relative positioning of the duplicate values
+// By adjusting the counting array after the initial pass, we can map
+// values to indices in the temp array
+// Can also use linked lists to make counting sort stable
 
-public class RadixSort
+public class StableCountingSort
 {
     public static void main(String[] args)
     {
-        int[] radixArray = {4725, 4586, 1330, 8792, 1594, 5729};
+        int[] intArray = {4725, 4586, 1330, 8792, 1594, 5729};
 
-        radixSort(radixArray, 10, 4);
+        radixSort(intArray, 10, 4);
 
-        for(int i = 0; i < radixArray.length; i++)
+        for(int i = 0; i < intArray.length; i++)
         {
-            System.out.println("i[" + i + "] = " + radixArray[i]);
+            System.out.println("i[" + i + "] = " + intArray[i]);
         }
     }
 
