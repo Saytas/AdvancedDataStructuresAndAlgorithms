@@ -1,12 +1,11 @@
-package Lists.Array_Lists;
+package Lists.Vectors;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
-// ArrayList is good for random access and good for iterating of the items
-// in the list if you have an index, but it is not so good for inserting items
-// into the list in any position other than the end; it is not good for deletions,
-// removals, and accessing an item in the list when you do not have its index (Backed by an array)
+// Vector is synchronized and thread safe meaning it is okay to use from
+// different threads without us having to synchronize the code
+// If you need thread safety use Vectors if you do not use ArrayList
 
 public class Main
 {
@@ -15,7 +14,11 @@ public class Main
         // Using List<> if we decide later that we want to use a different
         // type of list, it is easy to change the specific implementation
         // of the list that we are using
-        List<Employee> employeeList = new ArrayList<>(); // LinkedList<>();
+        // Vector also implements List interface so that is why rather than using
+        // specific implementation in the declaration, it is always better to use
+        // the interface that the implementation is using because then you can switch
+        // out to another class that implements the same interface without having to change any code
+        List<Employee> employeeList = new Vector<>(); // LinkedList<>();
         employeeList.add(new Employee("Jane", "Jones", 123));
         employeeList.add(new Employee("John", "Doe", 4567));
         employeeList.add(new Employee("Marry", "Smith", 22));
