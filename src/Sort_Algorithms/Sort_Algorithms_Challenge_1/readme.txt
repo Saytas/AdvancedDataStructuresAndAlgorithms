@@ -1,0 +1,4 @@
+- Modify the merge sort algorithm so that it sorts integers in
+DESCENDING order
+
+- Use the usual example array
